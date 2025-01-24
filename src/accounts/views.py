@@ -24,5 +24,20 @@ class UserRegisterView(APIView):
         serializer = UserRegisterSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            content_data ={
+                'provider_data':"Service Available"
+                'message':serializer.success
+                'status':200
+                'data':serializer.data
+                }
+            return Response(content_data)
+        else:
+            content_data = {
+                'provider_data':"Service Unavailable"
+                'message':serializer.errors
+                'status':400
+                'data':serializer.data
+                }
+            return Response(content_data)
+                        
+           
