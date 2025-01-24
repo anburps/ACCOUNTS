@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from . models import *
 from accounts.Serializers import *
-from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.pagination import PageNumberPagination
@@ -13,12 +13,6 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 
 class UserRegisterView(APIView):
-    authentication_classes = [TokenAuthentication,jwtAuthentication]
-    permission_classes = [IsAuthenticated]
-    filter_backends = [DjangoFilterBackend,SearchFilter]
-    search_fields = ['email']
-    ordering_fields = ['username','email']
-    pagination_class = PageNumberPagination
 
     def post(self, request):
         serializer = UserRegisterSerializer(data=request.data)
