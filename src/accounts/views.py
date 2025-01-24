@@ -25,18 +25,18 @@ class UserRegisterView(APIView):
         if serializer.is_valid():
             serializer.save()
             content_data ={
-                'provider_data':"Service Available"
-                'message':serializer.success
-                'status':200
-                'data':serializer.data
+                'provider_data':"Service Available",
+                'message':'User created successfully',
+                'status':200,
+                'data':serializer.data,
                 }
             return Response(content_data)
         else:
             content_data = {
-                'provider_data':"Service Unavailable"
-                'message':serializer.errors
-                'status':400
-                'data':serializer.data
+                'provider_data':"Service Unavailable",
+                'message':serializer.errors,
+                'status':400,
+                'data':serializer.data,
                 }
             return Response(content_data)
                         
