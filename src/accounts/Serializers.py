@@ -8,7 +8,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True,validators=[validate_password])
     conform_password = serializers.CharField(write_only=True)
     class Meta:
-        model = UserData
+        model = User
         fields = ['username', 'email', 'password']
 
     def validate(self, attrs):

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
+    'djaccount',
     'rest_framework',
     'rest_framework_simplejwt',
     'django_filters',
@@ -127,7 +128,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'djaccount.CustomUser'
+
 
 django_restframework_simplejwt = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
